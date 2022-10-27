@@ -1,7 +1,4 @@
 # coding: utf-8
-import csv
-from pathlib import Path
-
 """Part 1: Automate the Calculations.
 
 Automate the calculations for the loan portfolio summaries.
@@ -12,6 +9,9 @@ First, let's start with some calculations on a list of prices for 5 loans.
     3. Using the sum of all loans and the total number of loans, calculate the average loan price.
     4. Print all calculations with descriptive messages.
 """
+import csv
+from pathlib import Path
+
 loan_amount = [500, 600, 200, 1000, 450]
 
 # How many loans are in the list?
@@ -87,12 +87,17 @@ present_value = future_value/ (1 + discount_rate/12) ** remaining_months
 print(f"With a discount rate of {discount_rate}, the present value of the loan is ${present_value:.2f}")
 # YOUR CODE HERE!
 
-# If Present Value represents what the loan is really worth, does it make sense to buy the loan at its cost?
+# If Present Value represents what the loan is really worth, does it make sense to buy the loan
+# # at its cost?
 # @TODO: Write a conditional statement (an if-else statement) to decide if the present value represents the loan's fair value.
 #    If the present value of the loan is greater than or equal to the cost, then print a message that says the loan is worth at least the cost to buy it.
 #    Else, the present value of the loan is less than the loan cost, then print a message that says that the loan is too expensive and not worth the price.
 # YOUR CODE HERE!
-
+loan_price = loan['loan_price']
+if present_value > loan_price:
+    print(f'Buy this loan.  Its present value(${present_value:.2f}) is higher than its price(${loan_price})')
+else:
+    print(f'This loan is too expensive. Don\'t buy it')
 
 """Part 3: Perform Financial Calculations.
 
@@ -202,10 +207,9 @@ output_path = Path("inexpensive_loans.csv")
 # @TODO: Use the csv library and `csv.writer` to write the header row
 # and each row of `loan.values()` from the `inexpensive_loans` list.
 # YOUR CODE HERE!
-with open("./inexpensive_loans.csv", 'w', newline='') as file:
+with open(output_path, 'w', newline='') as file:
     writer = csv.writer(file)
     writer.writerow(header)
     for loan in loans:
-        print(loan)
         writer.writerow(loan.values())
 
