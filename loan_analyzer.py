@@ -75,12 +75,16 @@ loan = {
 # Print each variable.
 # YOUR CODE HERE!
 
-
+remaining_months = loan.get('remaining_months')
+future_value = loan.get('future_value')
+print(F"This loan has {remaining_months} months remaining and a future value of ${future_value}")
 # @TODO: Use the formula for Present Value to calculate a "fair value" of the loan.
 # Use a minimum required return of 20% as the discount rate.
 #   You'll want to use the **monthly** version of the present value formula.
 #   HINT: Present Value = Future Value / (1 + Discount_Rate/12) ** remaining_months
-
+discount_rate = 0.2
+present_value = future_value/ (1 + discount_rate/12) ** remaining_months
+print(f"With a discount rate of {discount_rate}, the present value of the loan is ${present_value:.2f}")
 # YOUR CODE HERE!
 
 # If Present Value represents what the loan is really worth, does it make sense to buy the loan at its cost?
@@ -118,7 +122,7 @@ new_loan = {
 # @TODO: Use the function to calculate the present value of the new loan given below.
 #    Use an `annual_discount_rate` of 0.2 for this new loan calculation.
 # YOUR CODE HERE!
-print(f"The present value of the loan is: {present_value}")
+print(f"The present value of the loan is: {present_value:.2f}")
 
 
 """Part 4: Conditionally filter lists of loans.
